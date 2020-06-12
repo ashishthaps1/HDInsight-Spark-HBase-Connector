@@ -1,8 +1,8 @@
-#Use Apache Spark to read and write Apache HBase data
+# Use Apache Spark to read and write Apache HBase data
 These set of scripts helps with HBase and Spark connector docunentation 
 https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-using-spark-query-hbase#prepare-sample-data-in-apache-hbase
 
-###Prerequisites
+### Prerequisites
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
@@ -12,8 +12,8 @@ https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-using-spark-query-hba
     - [What does the script do?](#what-does-the-script-do)
 
 <!-- /code_chunk_output -->
-1. Two separate secure HDInsight clusters deployed in the same virtual network. One HBase, and one Spark with at least Spark 2.1 (HDInsight 3.6) installed. 
-2. Optional but recommended step: Spark cluster storage added as HBase cluster secondary storage, see Add additional storage accounts to HDInsight. Before proceeding, make sure your cluster is running without errors on Ambari after secondary storage is added.
+1. Two separate secure HDInsight clusters deployed in the same [virtual network](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-plan-virtual-network-deployment) . One HBase, and one Spark with at least Spark 2.1 (HDInsight 3.6) installed. 
+2. Optional but recommended step: Spark cluster storage added as HBase cluster secondary storage, see Add additional [storage accounts](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-add-storage) to HDInsight. Before proceeding, make sure your cluster is running without errors on Ambari after secondary storage is added.
 ###What does the script do?
 If Spark storage is added to HBase as secondary storage:
 1.	Copy hbase-site.xml file onto the spark storage account (through hdfs)
@@ -35,7 +35,7 @@ Scaling Scenario for ESP Cluster:
 3.	Currently the script does not support scaling of Spark Cluster, if you wish to scale your spark cluster, please ensure you manually modify the /etc/hosts file on Spark cluster to include HBase /etc/hosts entries
 How to run script action?
 
-Use Script Action on your HBase cluster to apply the changes with the following considerations:
+Use [Script Action](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-to-a-running-cluster) on your HBase cluster to apply the changes with the following considerations:
 
 
 
@@ -55,7 +55,7 @@ Use Script Action on your HBase cluster to apply the changes with the following 
 Example: 
 -u sshuser -n mysparkcluster -a sparkstorageacc -c sparkstoragecontainer -p mySparkPassw0rd
 
-###Run Spark Shell referencing the Spark HBase Connector
+### Run Spark Shell referencing the Spark HBase Connector
 After completion of above step, you should be able to run spark shell referencing to the appropriate version of Spark HBase Connector provided by Hortonworks.
 
 Please reference to OSS Spark Hive Connector Core Repository for the most recent corresponding SHC Core version for your cluster version scenario. Below table are examples of the command HDInsight team uses for testing:
